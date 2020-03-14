@@ -5,6 +5,8 @@
  */
 package code_breaker;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nkuma
@@ -61,9 +63,13 @@ public class Play extends javax.swing.JFrame {
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         // TODO add your handling code here:
-        Menu mMenu = new Menu();
-        mMenu.setVisible(true);
-        dispose();
+        int response = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to quit the current game?", "Quit Current Game",JOptionPane.YES_NO_OPTION);
+        if (response == 0) 
+        {    
+            Menu mMenu = new Menu();
+            mMenu.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnQuitActionPerformed
 
     /**
