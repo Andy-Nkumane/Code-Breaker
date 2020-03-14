@@ -5,6 +5,8 @@
  */
 package code_breaker;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nkuma
@@ -86,7 +88,8 @@ public class Start extends javax.swing.JFrame {
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         // TODO add your handling code here:
-        dispose();
+        int response = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to quit the game?", "Quit",JOptionPane.YES_NO_OPTION);
+        if (response == 0) dispose();
     }//GEN-LAST:event_btnQuitActionPerformed
 
     /**
