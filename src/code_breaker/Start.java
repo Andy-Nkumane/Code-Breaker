@@ -44,6 +44,11 @@ public class Start extends javax.swing.JFrame {
         });
 
         btnQuit.setText("Quit");
+        btnQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +83,11 @@ public class Start extends javax.swing.JFrame {
         mMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnQuitActionPerformed
 
     /**
      * @param args the command line arguments

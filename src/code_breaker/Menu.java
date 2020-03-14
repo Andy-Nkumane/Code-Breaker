@@ -39,8 +39,18 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setText("Main Menu");
 
         btnPlay.setText("Play");
+        btnPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayActionPerformed(evt);
+            }
+        });
 
         btnSettings.setText("Settings");
+        btnSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSettingsActionPerformed(evt);
+            }
+        });
 
         btnInstructions.setText("Instructions");
 
@@ -98,6 +108,20 @@ public class Menu extends javax.swing.JFrame {
         mStart.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingsActionPerformed
+        // TODO add your handling code here:
+        Settings mSettings = new Settings();
+        mSettings.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSettingsActionPerformed
+
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+        // TODO add your handling code here:
+        Play mPlay = new Play();
+        mPlay.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPlayActionPerformed
 
     /**
      * @param args the command line arguments
