@@ -97,6 +97,11 @@ public class Play extends javax.swing.JFrame {
         btn0.setText("0");
 
         btnCheck.setText("Check Entry");
+        btnCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear Entry");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +111,11 @@ public class Play extends javax.swing.JFrame {
         });
 
         btnNew.setText("New Game");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,9 +231,7 @@ public class Play extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        jtpEntry.setText("Your Entry \n---------------");
-        jtpInPos.setText("In Position \n---------------");
-        jtpOutPos.setText("Out of Position \n--------------------");
+        NewGame();
     }//GEN-LAST:event_formComponentShown
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -231,6 +239,17 @@ public class Play extends javax.swing.JFrame {
         jtfEntry.setText("");
         Enable(true);
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        // TODO add your handling code here:
+        NewGame();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        // TODO add your handling code here:
+        jtpEntry.setText(jtpEntry.getText() + "\n" + jtfEntry.getText());
+        jtfEntry.setText("");
+    }//GEN-LAST:event_btnCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,8 +296,15 @@ public class Play extends javax.swing.JFrame {
         btn6.setEnabled(tf);
         btn7.setEnabled(tf);
         btn8.setEnabled(tf);
-        btn9.setEnabled(tf);
-        
+        btn9.setEnabled(tf);   
+    }
+    
+    void NewGame(){
+        jtpEntry.setText("Your Entry \n---------------");
+        jtpInPos.setText("In Position \n---------------");
+        jtpOutPos.setText("Out of Position \n--------------------");
+        jtfEntry.setText("");
+        Enable(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
