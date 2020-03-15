@@ -285,17 +285,20 @@ public class Play extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         NewGame();
+        btnCheck.setEnabled(false);
     }//GEN-LAST:event_formComponentShown
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText("");
         Enable(true);
+        btnCheck.setEnabled(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
-        NewGame();
+        int response = JOptionPane.showConfirmDialog(btnNew, "Are you sure you want to start a new game?", "Start New Game",JOptionPane.YES_NO_OPTION);
+        if (response == 0) NewGame();
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
@@ -309,60 +312,70 @@ public class Play extends javax.swing.JFrame {
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "1");
         btn1.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "2");
         btn2.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "3");
         btn3.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "4");
         btn4.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "5");
         btn5.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "6");
         btn6.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "7");
         btn7.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "8");
         btn8.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "9");
         btn9.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         // TODO add your handling code here:
         jtfEntry.setText(jtfEntry.getText() + "0");
         btn0.setEnabled(false);
+        CheckLength();
     }//GEN-LAST:event_btn0ActionPerformed
 
     /**
@@ -419,6 +432,14 @@ public class Play extends javax.swing.JFrame {
         jtpOutPos.setText("Out of Position \n--------------------");
         jtfEntry.setText("");
         Enable(true);
+        btnCheck.setEnabled(false);
+    }
+    
+    void CheckLength(){
+        if (jtfEntry.getText().length() == 3){
+            Enable(false);
+            btnCheck.setEnabled(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
