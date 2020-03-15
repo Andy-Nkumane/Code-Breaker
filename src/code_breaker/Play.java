@@ -7,6 +7,7 @@ package code_breaker;
 
 import java.awt.ComponentOrientation;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 /**
  *
@@ -433,6 +434,16 @@ public class Play extends javax.swing.JFrame {
         jtfEntry.setText("");
         Enable(true);
         btnCheck.setEnabled(false);
+        Random randomNum = new Random();
+        String code = "";
+        for (int i = 0; i < 3; i++){
+           String num = Integer.toString(randomNum.nextInt(10));
+           while (code.indexOf(num) != -1){
+                num = Integer.toString(randomNum.nextInt(10));
+           }
+           code += num;
+        }
+        JOptionPane.showMessageDialog(rootPane, code);
     }
     
     void CheckLength(){
