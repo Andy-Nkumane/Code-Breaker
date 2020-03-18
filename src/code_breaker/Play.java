@@ -340,7 +340,6 @@ public class Play extends javax.swing.JFrame {
         jtfEntry.setText(jtfEntry.getText() + "3");
         btn3.setEnabled(false);
         CheckLength();
-        CheckEntry(jtfEntry.getText());
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
@@ -446,6 +445,7 @@ public class Play extends javax.swing.JFrame {
         jtpOutPos.setText("Out of Position \n--------------------");
         jtfEntry.setText("");
         Enable(true);
+        btnClear.setEnabled(true);
         btnCheck.setEnabled(false);
         Random randomNum = new Random();
         String code = "";
@@ -475,7 +475,19 @@ public class Play extends javax.swing.JFrame {
             Enable(false);
             btnClear.setEnabled(false);
             JOptionPane.showMessageDialog(btnCheck, "Congratulations - You broke the Code!!", "Code Breaker",JOptionPane.INFORMATION_MESSAGE);
-            
+        }
+        else{
+            int inPos = 0;
+            int outPos = 0;
+            for (int i=0; i<code.length(); i++){
+                int indx = entry.indexOf(code.charAt(i));
+                if (indx != -1){
+                    if (indx == i) inPos++;
+                    else outPos++;
+                }
+            }
+            jtpInPos.setText(jtpInPos.getText() + "\n" + inPos);
+            jtpOutPos.setText(jtpOutPos.getText() + "\n" + outPos);
         }
     }
 
