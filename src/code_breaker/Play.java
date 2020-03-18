@@ -52,6 +52,7 @@ public class Play extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         jtfEntry = new javax.swing.JTextField();
+        jtfCode = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Code Breaker");
@@ -171,6 +172,8 @@ public class Play extends javax.swing.JFrame {
 
         jtfEntry.setEditable(false);
 
+        jtfCode.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,7 +198,9 @@ public class Play extends javax.swing.JFrame {
                                     .addComponent(btn6))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(72, 72, 72)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jtfCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnQuit))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,7 +238,7 @@ public class Play extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jtfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,12 +264,16 @@ public class Play extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(btnNew)
                         .addGap(18, 18, 18)
-                        .addComponent(btnQuit))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane5)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnQuit)
+                            .addComponent(jtfCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5))
+                        .addGap(15, 15, 15))))
         );
 
         getAccessibleContext().setAccessibleParent(jScrollPane3);
@@ -285,6 +294,7 @@ public class Play extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        jtfCode.setVisible(false);
         NewGame();
         btnCheck.setEnabled(false);
     }//GEN-LAST:event_formComponentShown
@@ -305,8 +315,10 @@ public class Play extends javax.swing.JFrame {
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         // TODO add your handling code here:
         jtpEntry.setText(jtpEntry.getText() + "\n" + jtfEntry.getText());
-        jtfEntry.setText("");
         Enable(true);
+        btnCheck.setEnabled(false);
+        CheckEntry(jtfEntry.getText());
+        jtfEntry.setText("");
     }//GEN-LAST:event_btnCheckActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
@@ -328,6 +340,7 @@ public class Play extends javax.swing.JFrame {
         jtfEntry.setText(jtfEntry.getText() + "3");
         btn3.setEnabled(false);
         CheckLength();
+        CheckEntry(jtfEntry.getText());
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
@@ -444,12 +457,25 @@ public class Play extends javax.swing.JFrame {
            code += num;
         }
         JOptionPane.showMessageDialog(rootPane, code);
+        jtfCode.setText(code);
     }
     
     void CheckLength(){
         if (jtfEntry.getText().length() == 3){
             Enable(false);
             btnCheck.setEnabled(true);
+        }
+    }
+    
+    void CheckEntry(String entry){
+        String code = jtfCode.getText();
+        if (entry.equals(code)){
+            jtpInPos.setText(jtpInPos.getText() + "\n" + code.length());
+            jtpOutPos.setText(jtpOutPos.getText() + "\n" + "0");
+            Enable(false);
+            btnClear.setEnabled(false);
+            JOptionPane.showMessageDialog(btnCheck, "Congratulations - You broke the Code!!", "Code Breaker",JOptionPane.INFORMATION_MESSAGE);
+            
         }
     }
 
@@ -471,6 +497,7 @@ public class Play extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jtfCode;
     private javax.swing.JTextField jtfEntry;
     private javax.swing.JTextPane jtpEntry;
     private javax.swing.JTextPane jtpInPos;
