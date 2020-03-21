@@ -6,8 +6,14 @@
 package code_breaker;
 
 import java.awt.ComponentOrientation;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -444,6 +450,25 @@ public class Play extends javax.swing.JFrame {
     }
     
     void NewGame(){
+        
+        int len = 0;
+        String diff;
+        
+        File settings = new File("Settings.txt");
+        if (settings.exists()){
+            try {
+                Scanner read = new Scanner(settings);
+                len = Integer.parseInt(read.nextLine());
+                diff = read.nextLine();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            len = 3;
+            diff = "Easy";
+        }
+        
         jtpEntry.setText("Your Entry \n---------------");
         jtpInPos.setText("In Position \n---------------");
         jtpOutPos.setText("Out of Position \n--------------------");
@@ -454,7 +479,7 @@ public class Play extends javax.swing.JFrame {
         Random randomNum = new Random();
         String code = "";
         jtfCode.setVisible(false);
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < len; i++){
            String num = Integer.toString(randomNum.nextInt(10));
            while (code.indexOf(num) != -1){
                 num = Integer.toString(randomNum.nextInt(10));

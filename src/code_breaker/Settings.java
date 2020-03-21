@@ -115,7 +115,7 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             FileWriter newSettings = new FileWriter("Settings.txt");
-            newSettings.write(jsLength.getValue() + "\n" + "Easy");
+            newSettings.write(jsLength.getValue() + "\n" + "Easy    ");
             newSettings.close();
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,25 +138,24 @@ public class Settings extends javax.swing.JFrame {
         if (settings.exists() == false) {
             try {
                 settings.createNewFile();
+                jsLength.setValue(3);
             } catch (IOException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else {
-            jsLength.setValue(3);
+            try {
+                Scanner read = new Scanner(settings);
+                int len = Integer.parseInt(read.nextLine());
+                String diff = read.nextLine();
+                jsLength.setValue(len);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         jsLength.setMaximum(9);
         jsLength.setMinimum(3);
         lblLength.setText(String.valueOf(getLength()));
-        try {
-            Scanner reade = new Scanner(settings);
-            while (reade.hasNextLine()){
-                String data = reade.nextLine();
-                System.out.println(data);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_formComponentShown
 
     private void jsLengthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseDragged
