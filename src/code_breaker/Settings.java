@@ -39,6 +39,7 @@ public class Settings extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jsLength = new javax.swing.JSlider();
         lblLength = new javax.swing.JLabel();
+        jcbDifficulty = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Settings");
@@ -75,6 +76,8 @@ public class Settings extends javax.swing.JFrame {
 
         lblLength.setText("jLabel1");
 
+        jcbDifficulty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,14 +88,19 @@ public class Settings extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(btnSave)
                 .addGap(91, 91, 91))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblLength)
                 .addGap(76, 76, 76))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +109,9 @@ public class Settings extends javax.swing.JFrame {
                 .addComponent(lblLength)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSave))
@@ -115,7 +125,7 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             FileWriter newSettings = new FileWriter("Settings.txt");
-            newSettings.write(jsLength.getValue() + "\n" + "Easy    ");
+            newSettings.write(jsLength.getValue() + "\n" + jcbDifficulty.getSelectedItem());
             newSettings.close();
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,11 +144,17 @@ public class Settings extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        jcbDifficulty.removeAllItems();
+        jcbDifficulty.addItem("Easy");
+        jcbDifficulty.addItem("Medium");
+        jcbDifficulty.addItem("Hard");
+        jcbDifficulty.addItem("Unlimited");
         File settings = new File("Settings.txt");
         if (settings.exists() == false) {
             try {
                 settings.createNewFile();
                 jsLength.setValue(3);
+                jcbDifficulty.setSelectedItem("Easy");
             } catch (IOException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -149,10 +165,12 @@ public class Settings extends javax.swing.JFrame {
                 int len = Integer.parseInt(read.nextLine());
                 String diff = read.nextLine();
                 jsLength.setValue(len);
+                jcbDifficulty.setSelectedItem(diff);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         jsLength.setMaximum(9);
         jsLength.setMinimum(3);
         lblLength.setText(String.valueOf(getLength()));
@@ -210,6 +228,7 @@ public class Settings extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> jcbDifficulty;
     private javax.swing.JSlider jsLength;
     private javax.swing.JLabel lblLength;
     // End of variables declaration//GEN-END:variables
