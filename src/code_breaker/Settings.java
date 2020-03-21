@@ -40,6 +40,7 @@ public class Settings extends javax.swing.JFrame {
         jsLength = new javax.swing.JSlider();
         lblLength = new javax.swing.JLabel();
         jcbDifficulty = new javax.swing.JComboBox<>();
+        lblAttempt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Settings");
@@ -74,9 +75,16 @@ public class Settings extends javax.swing.JFrame {
             }
         });
 
-        lblLength.setText("jLabel1");
+        lblLength.setText("Length");
 
         jcbDifficulty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbDifficulty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbDifficultyActionPerformed(evt);
+            }
+        });
+
+        lblAttempt.setText("Attempts");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +107,9 @@ public class Settings extends javax.swing.JFrame {
                         .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(lblAttempt)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,7 +120,9 @@ public class Settings extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAttempt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
@@ -155,6 +167,7 @@ public class Settings extends javax.swing.JFrame {
                 settings.createNewFile();
                 jsLength.setValue(3);
                 jcbDifficulty.setSelectedItem("Easy");
+                lblAttempt.setText(String.valueOf(Attempts()));
             } catch (IOException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -166,6 +179,8 @@ public class Settings extends javax.swing.JFrame {
                 String diff = read.nextLine();
                 jsLength.setValue(len);
                 jcbDifficulty.setSelectedItem(diff);
+                if (diff == "Unlimited") lblAttempt.setText("Infinity");
+                else lblAttempt.setText(String.valueOf(Attempts()));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -179,12 +194,22 @@ public class Settings extends javax.swing.JFrame {
     private void jsLengthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseDragged
         // TODO add your handling code here:
         lblLength.setText(String.valueOf(getLength()));
+        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        else lblAttempt.setText(String.valueOf(Attempts()));
     }//GEN-LAST:event_jsLengthMouseDragged
 
     private void jsLengthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseClicked
         // TODO add your handling code here:
         lblLength.setText(String.valueOf(getLength()));
+        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        else lblAttempt.setText(String.valueOf(Attempts()));
     }//GEN-LAST:event_jsLengthMouseClicked
+
+    private void jcbDifficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDifficultyActionPerformed
+        // TODO add your handling code here:
+        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        else lblAttempt.setText(String.valueOf(Attempts()));
+    }//GEN-LAST:event_jcbDifficultyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,12 +249,44 @@ public class Settings extends javax.swing.JFrame {
     int getLength(){
         return(jsLength.getValue());
     }
+    
+    int Attempts(){
+        if (jcbDifficulty.getSelectedItem() == "Easy"){
+            if (jsLength.getValue() == 3) return 14;
+            else if (jsLength.getValue() == 4) return 16;
+            else if (jsLength.getValue() == 5) return 18;
+            else if (jsLength.getValue() == 6) return 20;
+            else if (jsLength.getValue() == 7) return 24;
+            else if (jsLength.getValue() == 8) return 28;
+            else if (jsLength.getValue() == 9) return 30;
+        } 
+        else if (jcbDifficulty.getSelectedItem() == "Medium"){
+            if (jsLength.getValue() == 3) return 10;
+            else if (jsLength.getValue() == 4) return 12;
+            else if (jsLength.getValue() == 5) return 14;
+            else if (jsLength.getValue() == 6) return 16;
+            else if (jsLength.getValue() == 7) return 20;
+            else if (jsLength.getValue() == 8) return 24;
+            else if (jsLength.getValue() == 9) return 26;
+        }
+        else if (jcbDifficulty.getSelectedItem() == "Hard"){
+            if (jsLength.getValue() == 3) return 6;
+            else if (jsLength.getValue() == 4) return 8;
+            else if (jsLength.getValue() == 5) return 10;
+            else if (jsLength.getValue() == 6) return 12;
+            else if (jsLength.getValue() == 7) return 16;
+            else if (jsLength.getValue() == 8) return 20;
+            else if (jsLength.getValue() == 9) return 22;
+        }
+        return 0;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> jcbDifficulty;
     private javax.swing.JSlider jsLength;
+    private javax.swing.JLabel lblAttempt;
     private javax.swing.JLabel lblLength;
     // End of variables declaration//GEN-END:variables
 

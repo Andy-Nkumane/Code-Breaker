@@ -48,6 +48,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Component id="jcbDifficulty" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="lblAttempt" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -62,7 +64,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jsLength" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jcbDifficulty" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jcbDifficulty" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAttempt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="143" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -98,7 +103,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblLength">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="text" type="java.lang.String" value="Length"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbDifficulty">
@@ -112,9 +117,17 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDifficultyActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAttempt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Attempts"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
