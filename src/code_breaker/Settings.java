@@ -6,8 +6,10 @@
 package code_breaker;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -111,6 +113,13 @@ public class Settings extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        try {
+            FileWriter newSettings = new FileWriter("Settings.txt");
+            newSettings.write(jsLength.getValue() + "\n" + "Easy");
+            newSettings.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Menu mMenu = new Menu();
         mMenu.setVisible(true);
         dispose();
@@ -126,15 +135,28 @@ public class Settings extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         File settings = new File("Settings.txt");
-        try {
-            settings.createNewFile();
-        } catch (IOException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        if (settings.exists() == false) {
+            try {
+                settings.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            jsLength.setValue(3);
         }
         jsLength.setMaximum(9);
         jsLength.setMinimum(3);
-        jsLength.setValue(3);
         lblLength.setText(String.valueOf(getLength()));
+        try {
+            Scanner reade = new Scanner(settings);
+            while (reade.hasNextLine()){
+                String data = reade.nextLine();
+                System.out.println(data);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formComponentShown
 
     private void jsLengthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseDragged
