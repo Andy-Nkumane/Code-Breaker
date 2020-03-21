@@ -137,7 +137,7 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             FileWriter newSettings = new FileWriter("Settings.txt");
-            newSettings.write(jsLength.getValue() + "\n" + jcbDifficulty.getSelectedItem());
+            newSettings.write(jsLength.getValue() + "\n" + jcbDifficulty.getSelectedItem() + Attempts());
             newSettings.close();
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
@@ -178,9 +178,9 @@ public class Settings extends javax.swing.JFrame {
                 int len = Integer.parseInt(read.nextLine());
                 String diff = read.nextLine();
                 jsLength.setValue(len);
-                jcbDifficulty.setSelectedItem(diff);
-                if (diff == "Unlimited") lblAttempt.setText("Infinity");
-                else lblAttempt.setText(String.valueOf(Attempts()));
+                jcbDifficulty.setSelectedItem(diff.replaceAll("\\d+",""));
+                if ("Unlimited".equals(diff)) lblAttempt.setText("Infinity");
+                else lblAttempt.setText(diff.replaceAll("\\D+",""));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -194,20 +194,20 @@ public class Settings extends javax.swing.JFrame {
     private void jsLengthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseDragged
         // TODO add your handling code here:
         lblLength.setText(String.valueOf(getLength()));
-        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        if ("Unlimited".equals(jcbDifficulty.getSelectedItem())) lblAttempt.setText("Infinity");
         else lblAttempt.setText(String.valueOf(Attempts()));
     }//GEN-LAST:event_jsLengthMouseDragged
 
     private void jsLengthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseClicked
         // TODO add your handling code here:
         lblLength.setText(String.valueOf(getLength()));
-        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        if ("Unlimited".equals(jcbDifficulty.getSelectedItem())) lblAttempt.setText("Infinity");
         else lblAttempt.setText(String.valueOf(Attempts()));
     }//GEN-LAST:event_jsLengthMouseClicked
 
     private void jcbDifficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDifficultyActionPerformed
         // TODO add your handling code here:
-        if (jcbDifficulty.getSelectedItem() == "Unlimited") lblAttempt.setText("Infinity");
+        if ("Unlimited".equals(jcbDifficulty.getSelectedItem())) lblAttempt.setText("Infinity");
         else lblAttempt.setText(String.valueOf(Attempts()));
     }//GEN-LAST:event_jcbDifficultyActionPerformed
 

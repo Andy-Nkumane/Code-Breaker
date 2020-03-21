@@ -1,2 +1,2 @@
-4
-Unlimited
+5
+Hard10
