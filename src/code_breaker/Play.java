@@ -60,6 +60,7 @@ public class Play extends javax.swing.JFrame {
         jtfEntry = new javax.swing.JTextField();
         jtfCode = new javax.swing.JTextField();
         btnAnswer = new javax.swing.JButton();
+        jtfAttempts = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Code Breaker");
@@ -188,18 +189,27 @@ public class Play extends javax.swing.JFrame {
             }
         });
 
+        jtfAttempts.setEditable(false);
+        jtfAttempts.setText("00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfAttempts, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +250,9 @@ public class Play extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfAttempts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -316,6 +328,8 @@ public class Play extends javax.swing.JFrame {
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         // TODO add your handling code here:
+        int attempt = Integer.parseInt(jtfAttempts.getText()) - 1;
+        jtfAttempts.setText(String.valueOf(attempt));
         jtpEntry.setText(jtpEntry.getText() + "\n" + jtfEntry.getText());
         Enable(true);
         btnCheck.setEnabled(false);
@@ -452,14 +466,18 @@ public class Play extends javax.swing.JFrame {
     void NewGame(){
         
         int len = 0;
-        String diff;
+        String diff = null;
+        int attempts = 0;
+        String data = null;
         
         File settings = new File("Settings.txt");
         if (settings.exists()){
             try {
                 Scanner read = new Scanner(settings);
                 len = Integer.parseInt(read.nextLine());
-                diff = read.nextLine();
+                data = read.nextLine();
+                diff = data.replaceAll("\\d+","");
+                attempts = Integer.parseInt(data.replaceAll("\\D+",""));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -467,6 +485,7 @@ public class Play extends javax.swing.JFrame {
         else {
             len = 3;
             diff = "Easy";
+            attempts = 14;
         }
         
         jtpEntry.setText("Your Entry \n---------------");
@@ -486,8 +505,9 @@ public class Play extends javax.swing.JFrame {
            }
            code += num;
         }
-        JOptionPane.showMessageDialog(rootPane, code);
+//        JOptionPane.showMessageDialog(rootPane, code);
         jtfCode.setText(code);
+        jtfAttempts.setText(String.valueOf(attempts));
     }
     
     void CheckLength(){
@@ -518,6 +538,12 @@ public class Play extends javax.swing.JFrame {
             }
             jtpInPos.setText(jtpInPos.getText() + "\n" + inPos);
             jtpOutPos.setText(jtpOutPos.getText() + "\n" + outPos);
+            if (jtfAttempts.getText().equals("0")){
+                Enable(false);
+                btnClear.setEnabled(false);
+                JOptionPane.showMessageDialog(btnCheck, "Game over!! You failed to break the code!!", "Game Over",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(btnCheck, jtfCode.getText(), "Code Revealed",JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 
@@ -540,6 +566,7 @@ public class Play extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jtfAttempts;
     private javax.swing.JTextField jtfCode;
     private javax.swing.JTextField jtfEntry;
     private javax.swing.JTextPane jtpEntry;
