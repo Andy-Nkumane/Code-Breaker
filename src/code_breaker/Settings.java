@@ -35,6 +35,8 @@ public class Settings extends javax.swing.JFrame {
 
         btnCancel = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        jsLength = new javax.swing.JSlider();
+        lblLength = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Settings");
@@ -58,6 +60,19 @@ public class Settings extends javax.swing.JFrame {
             }
         });
 
+        jsLength.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jsLengthMouseDragged(evt);
+            }
+        });
+        jsLength.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jsLengthMouseClicked(evt);
+            }
+        });
+
+        lblLength.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,11 +83,23 @@ public class Settings extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(btnSave)
                 .addGap(91, 91, 91))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLength)
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(lblLength)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jsLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSave))
@@ -99,13 +126,26 @@ public class Settings extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         File settings = new File("Settings.txt");
-        System.out.println(settings.exists());
         try {
             settings.createNewFile();
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         }
+        jsLength.setMaximum(9);
+        jsLength.setMinimum(3);
+        jsLength.setValue(3);
+        lblLength.setText(String.valueOf(getLength()));
     }//GEN-LAST:event_formComponentShown
+
+    private void jsLengthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseDragged
+        // TODO add your handling code here:
+        lblLength.setText(String.valueOf(getLength()));
+    }//GEN-LAST:event_jsLengthMouseDragged
+
+    private void jsLengthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsLengthMouseClicked
+        // TODO add your handling code here:
+        lblLength.setText(String.valueOf(getLength()));
+    }//GEN-LAST:event_jsLengthMouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,9 +181,19 @@ public class Settings extends javax.swing.JFrame {
             }
         });
     }
+    
+    int getLength(){
+        return(jsLength.getValue());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
+    private javax.swing.JSlider jsLength;
+    private javax.swing.JLabel lblLength;
     // End of variables declaration//GEN-END:variables
+
+    private String toString(int length) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
