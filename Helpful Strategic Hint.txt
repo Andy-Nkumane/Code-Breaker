@@ -1,0 +1,13 @@
+*Helpful Strategic Hint*
+
+The point of this game is to break the hidden code in as
+few tries as possible. It is important to view the 
+feedback provided before you try entering a new code.
+That way, you can minimize the number of mistakes you
+make at the same time gaining knowledge of the 
+hidden code. A good approach is to shift two or 
+three digits in the code at a time in order to narrow them
+down in the correct position.
+
+As always, try having fun and don't give up. This is a 
+game of strategy and deep thinking.

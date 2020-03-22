@@ -1,0 +1,14 @@
+*How It Works*
+
+The hidden code is randomly generated (you can't see it of
+course) and you have two options for play based on 
+difficulty: a specified number of tries based on the 
+difficulty level or an unlimited amount of tries.
+
+All you need to do is enter a code equal to the selected
+difficulty level/length and compare it with the hidden
+code. Each try is recorded in a list with feedback.
+
+Each indivitaul digit in the hidden code is different from
+the others, which means each digit does not repeat 
+within the hidden code.

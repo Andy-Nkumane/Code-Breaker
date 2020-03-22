@@ -1,0 +1,11 @@
+*CODE BREAKER HELP*
+
+This thought-provoking game requires reasoning
+and conclusion and is a fun and challenging game based
+on the original Bulls and Cows logic game. The
+difference of the hidden code can range anywhere from
+three to nine digits long.
+
+Use the feedback provided 
+during the game to break the
+hidden code!

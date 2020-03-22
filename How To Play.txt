@@ -1,0 +1,26 @@
+*How To Play*
+
+The game is very simple and easy to play. At the
+beginning, enter a code based on the required length
+and check your entry to compare it with the hidden
+code. The feedback provided is the number of digits in the
+correct position and the number of digits in the 
+incorrect position.
+
+Here is an example:
+
+	The hidden code is:
+	1234
+	The code entered is:
+	6243
+	The feedback you get is:
+		-In Position = 1
+		-Out of Position = 2
+
+As you can see, the (2) is in the correct position, but the
+(3) and (4) are not. All you can do at this point is shift
+some numbers around and try to figure out which ones
+are in the right position.
+
+If you decide to give up, just click on the Answer button
+and it will display the hidden code.

@@ -30,7 +30,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnPlay = new javax.swing.JButton();
         btnSettings = new javax.swing.JButton();
-        btnInstructions = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +52,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnInstructions.setText("Instructions");
+        btnHelp.setText("Help");
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -80,8 +85,8 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(btnInstructions)))
-                .addContainerGap(200, Short.MAX_VALUE))
+                        .addComponent(btnHelp)))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +98,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnInstructions)
+                .addComponent(btnHelp)
                 .addGap(25, 25, 25)
                 .addComponent(btnBack)
                 .addContainerGap(102, Short.MAX_VALUE))
@@ -122,6 +127,13 @@ public class Menu extends javax.swing.JFrame {
         mPlay.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPlayActionPerformed
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // TODO add your handling code here:
+        Help mHelp = new Help();
+        mHelp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHelpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnInstructions;
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnSettings;
     private javax.swing.JLabel jLabel1;
