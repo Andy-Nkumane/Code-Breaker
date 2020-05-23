@@ -37,6 +37,8 @@ public class Start extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Start");
+        setBackground(new java.awt.Color(102, 255, 102));
+        setForeground(java.awt.Color.lightGray);
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -46,10 +48,11 @@ public class Start extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Code Breaker");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vector", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Vivaldi", 0, 11))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vector's", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Vivaldi", 0, 36))); // NOI18N
 
         btnStart.setText("Start");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -69,29 +72,29 @@ public class Start extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnQuit)
-                            .addComponent(btnStart))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnQuit)
+                    .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnQuit, btnStart});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addComponent(btnStart)
-                .addGap(56, 56, 56)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(btnQuit)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnQuit, btnStart});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
