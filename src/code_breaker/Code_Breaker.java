@@ -18,6 +18,9 @@ public class Code_Breaker {
         // TODO code application logic here
         Start mStart = new Start();
         mStart.setVisible(true);
+        mStart.setSize(500, 410);
     }
     
 }
+
+

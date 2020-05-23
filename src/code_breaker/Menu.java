@@ -86,7 +86,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(btnHelp)))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(btnHelp)
                 .addGap(25, 25, 25)
                 .addComponent(btnBack)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,6 +111,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Start mStart = new Start();
         mStart.setVisible(true);
+        mStart.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -118,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Settings mSettings = new Settings();
         mSettings.setVisible(true);
+        mSettings.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnSettingsActionPerformed
 
@@ -125,6 +127,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Play mPlay = new Play();
         mPlay.setVisible(true);
+        mPlay.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnPlayActionPerformed
 
@@ -132,6 +135,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Help mHelp = new Help();
         mHelp.setVisible(true);
+        mHelp.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnHelpActionPerformed
 

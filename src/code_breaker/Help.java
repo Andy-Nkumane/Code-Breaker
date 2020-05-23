@@ -55,6 +55,7 @@ public class Help extends javax.swing.JFrame {
             }
         });
 
+        jtaHelp.setEditable(false);
         jtaHelp.setColumns(20);
         jtaHelp.setRows(5);
         jtaHelp.setText("help");
@@ -64,11 +65,13 @@ public class Help extends javax.swing.JFrame {
         jpHelp.setLayout(jpHelpLayout);
         jpHelpLayout.setHorizontalGroup(
             jpHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         jpHelpLayout.setVerticalGroup(
             jpHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addGroup(jpHelpLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jtpHelp.addTab("Help", jpHelp);
@@ -82,11 +85,11 @@ public class Help extends javax.swing.JFrame {
         jpWorks.setLayout(jpWorksLayout);
         jpWorksLayout.setHorizontalGroup(
             jpWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         jpWorksLayout.setVerticalGroup(
             jpWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
         );
 
         jtpHelp.addTab("How it works", jpWorks);
@@ -100,11 +103,11 @@ public class Help extends javax.swing.JFrame {
         jpPlay.setLayout(jpPlayLayout);
         jpPlayLayout.setHorizontalGroup(
             jpPlayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         jpPlayLayout.setVerticalGroup(
             jpPlayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
         );
 
         jtpHelp.addTab("How to play", jpPlay);
@@ -118,11 +121,11 @@ public class Help extends javax.swing.JFrame {
         jpHint.setLayout(jpHintLayout);
         jpHintLayout.setHorizontalGroup(
             jpHintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         jpHintLayout.setVerticalGroup(
             jpHintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
         );
 
         jtpHelp.addTab("Helpful strategic hint", jpHint);
@@ -147,10 +150,10 @@ public class Help extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jtpHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtpHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 370, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jtpHelp.getAccessibleContext().setAccessibleName("tab 1");
@@ -162,6 +165,7 @@ public class Help extends javax.swing.JFrame {
         // TODO add your handling code here:
         Menu mMenu = new Menu();
         mMenu.setVisible(true);
+        mMenu.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
