@@ -5,6 +5,9 @@
  */
 package code_breaker;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author nkuma
@@ -35,6 +38,11 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("Main Menu");
 
@@ -135,9 +143,15 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Help mHelp = new Help();
         mHelp.setVisible(true);
-        mHelp.setSize(500, 410);
+//        mHelp.setSize(500, 410);
         dispose();
     }//GEN-LAST:event_btnHelpActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments

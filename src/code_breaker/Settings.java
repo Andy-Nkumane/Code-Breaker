@@ -5,6 +5,8 @@
  */
 package code_breaker;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -158,6 +160,8 @@ public class Settings extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jcbDifficulty.removeAllItems();
         jcbDifficulty.addItem("Easy");
         jcbDifficulty.addItem("Medium");

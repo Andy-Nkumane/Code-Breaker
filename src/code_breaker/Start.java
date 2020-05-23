@@ -5,6 +5,8 @@
  */
 package code_breaker;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +37,13 @@ public class Start extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Start");
+        setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
@@ -100,6 +109,12 @@ public class Start extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to quit the game?", "Quit",JOptionPane.YES_NO_OPTION);
         if (response == 0) dispose();
     }//GEN-LAST:event_btnQuitActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
