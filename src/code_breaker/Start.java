@@ -48,7 +48,7 @@ public class Start extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Code Breaker");
